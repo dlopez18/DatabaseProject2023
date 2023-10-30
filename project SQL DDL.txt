@@ -1,0 +1,41 @@
+CREATE TABLE Customer (
+    customerID INT PRIMARY KEY,
+    email VARCHAR(50),
+    firstName VARCHAR(50),
+    lastName VARCHAR(50)
+);
+
+CREATE TABLE Order (
+    orderID INT PRIMARY KEY,
+    order_date DATE,
+    total_price DOUBLE,
+    customerID INT,
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID)
+);
+
+CREATE TABLE Product (
+    productID INT PRIMARY KEY,
+    product_name VARCHAR(20),
+    quantity INT,
+    price DOUBLE,
+    supplierID INT,
+    categoryID INT,
+    FOREIGN KEY (supplierID) REFERENCES Supplier(supplierID),
+    FOREIGN KEY (categoryID) REFERENCES Category(categoryID)
+);
+
+CREATE TABLE Category (
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(20)
+);
+
+CREATE TABLE Supplier (
+    supplierID INT PRIMARY KEY,
+    supplier_name VARCHAR(25),
+    steet_number INT,
+    street_name VARCHAR(25),
+    city VARCHAR(25),
+    state VARCHAR(2),
+    zip VARCHAR(5),
+    phone_number VARCHAR(10)
+);
